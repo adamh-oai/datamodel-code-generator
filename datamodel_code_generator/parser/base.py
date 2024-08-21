@@ -1432,10 +1432,6 @@ class Parser(ABC):
                 body=body, source=models[0].file_path if models else None
             )
 
-        # retain existing behaviour
-        if [*results] == [('__init__.py',)]:
-            return results[('__init__.py',)].body
-
         results = {tuple(i.replace('-', '_') for i in k): v for k, v in results.items()}
         results = (
             self.__postprocess_result_modules(results)
